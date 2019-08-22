@@ -1,42 +1,83 @@
 <style include="keyword-stats"></style>
 
 <span class="label"><a href="https://scryfall.com/search?q=o:/\b[[keywordData.keyword]]\b/">[[firstUpper_(keywordData.keyword)]]</a></span>
-<pie-mana-display
-    num-w="[[numW_]]"
-    num-u="[[numU_]]"
-    num-b="[[numB_]]"
-    num-r="[[numR_]]"
-    num-g="[[numG_]]"
-    num-c="[[numC_]]"
-    total="[[keywordData.length]]"></pie-mana-display>
-<div class="white badge">
-  <paper-tooltip>[[numW_]] white cards out of [[keywordData.length]] total</paper-tooltip>
-  <img src="/images/w.svg"> [[pct_(numW_)]]
-</div>
-<div class="blue badge">
-  <paper-tooltip>[[numU_]] blue cards out of [[keywordData.length]] total</paper-tooltip>
-  <img src="/images/u.svg"> [[pct_(numU_)]]
-</div>
-<div class="black badge">
-  <paper-tooltip>[[numB_]] black cards our of [[keywordData.length]] total</paper-tooltip>
-  <img src="/images/b.svg"> [[pct_(numB_)]]
-</div>
-<div class="red badge">
-  <paper-tooltip>[[numR_]] red cards our of [[keywordData.length]] total</paper-tooltip>
-  <img src="/images/r.svg"> [[pct_(numR_)]]
-</div>
-<div class="green badge">
-  <paper-tooltip>[[numG_]] green cards our of [[keywordData.length]] total</paper-tooltip>
-  <img src="/images/g.svg"> [[pct_(numG_)]]
-</div>
-<div class="colorless badge">
-  <paper-tooltip>[[numC_]] colorless cards our of [[keywordData.length]] total</paper-tooltip>
-  <img src="/images/c.svg"> [[pct_(numC_)]]
-</div>
-<div class="multicolor badge">
-  <paper-tooltip>[[numM_]] multicolor cards our of [[keywordData.length]] total</paper-tooltip>
-  <img src="/images/m.svg"> [[pct_(numM_)]]
-</div>
+<template is="dom-if" if="[[isIdentity_(colorType)]]">
+  <pie-mana-display
+      num-w="[[numIdW_]]"
+      num-u="[[numIdU_]]"
+      num-b="[[numIdB_]]"
+      num-r="[[numIdR_]]"
+      num-g="[[numIdG_]]"
+      num-c="[[numIdC_]]"
+      total="[[keywordData.length]]"></pie-mana-display>
+  <div class="white badge">
+    <paper-tooltip>[[numIdW_]] white cards out of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/w.svg"> [[pct_(numIdW_)]]
+  </div>
+  <div class="blue badge">
+    <paper-tooltip>[[numIdU_]] blue cards out of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/u.svg"> [[pct_(numIdU_)]]
+  </div>
+  <div class="black badge">
+    <paper-tooltip>[[numIdB_]] black cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/b.svg"> [[pct_(numIdB_)]]
+  </div>
+  <div class="red badge">
+    <paper-tooltip>[[numIdR_]] red cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/r.svg"> [[pct_(numIdR_)]]
+  </div>
+  <div class="green badge">
+    <paper-tooltip>[[numIdG_]] green cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/g.svg"> [[pct_(numIdG_)]]
+  </div>
+  <div class="colorless badge">
+    <paper-tooltip>[[numIdC_]] colorless cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/c.svg"> [[pct_(numIdC_)]]
+  </div>
+  <div class="multicolor badge">
+    <paper-tooltip>[[numIdM_]] multicolor cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/m.svg"> [[pct_(numIdM_)]]
+  </div>
+</template>
+<template is="dom-if" if="[[!isIdentity_(colorType)]]">
+  <pie-mana-display
+      num-w="[[numW_]]"
+      num-u="[[numU_]]"
+      num-b="[[numB_]]"
+      num-r="[[numR_]]"
+      num-g="[[numG_]]"
+      num-c="[[numC_]]"
+      total="[[keywordData.length]]"></pie-mana-display>
+  <div class="white badge">
+    <paper-tooltip>[[numW_]] white cards out of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/w.svg"> [[pct_(numW_)]]
+  </div>
+  <div class="blue badge">
+    <paper-tooltip>[[numU_]] blue cards out of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/u.svg"> [[pct_(numU_)]]
+  </div>
+  <div class="black badge">
+    <paper-tooltip>[[numB_]] black cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/b.svg"> [[pct_(numB_)]]
+  </div>
+  <div class="red badge">
+    <paper-tooltip>[[numR_]] red cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/r.svg"> [[pct_(numR_)]]
+  </div>
+  <div class="green badge">
+    <paper-tooltip>[[numG_]] green cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/g.svg"> [[pct_(numG_)]]
+  </div>
+  <div class="colorless badge">
+    <paper-tooltip>[[numC_]] colorless cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/c.svg"> [[pct_(numC_)]]
+  </div>
+  <div class="multicolor badge">
+    <paper-tooltip>[[numM_]] multicolor cards our of [[keywordData.length]] total</paper-tooltip>
+    <img src="/images/m.svg"> [[pct_(numM_)]]
+  </div>
+</template>
+
 <template is="dom-if" if="[[cardListShowing_]]">
   <div class="cardList">
     <template is="dom-repeat" items="[[keywordData]]">

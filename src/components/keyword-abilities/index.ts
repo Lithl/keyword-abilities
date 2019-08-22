@@ -17,9 +17,15 @@ import './index.scss?name=keyword-abilities';
 
 export type CardElement = CardData[] & { keyword: string };
 
+export enum ColorType {
+  COLOR = 'color',
+  IDENTITY = 'identity'
+}
+
 @customElement('keyword-abilities')
 export class KeywordAbilities extends PolymerElement {
   @property() protected keywordData_: CardElement[] = [];
+  @property() protected colorType_ = ColorType.IDENTITY;
   @query('#header') protected headerDiv_!: HTMLDivElement;
   @query('#content') protected contentDiv_!: HTMLDivElement;
 

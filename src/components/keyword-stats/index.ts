@@ -5,7 +5,7 @@ import '@polymer/paper-tooltip/paper-tooltip';
 import '../pie-mana-display';
 
 import { default as template } from './template.html';
-import { CardElement } from '../keyword-abilities';
+import { CardElement, ColorType } from '../keyword-abilities';
 
 import './index.scss?name=keyword-stats';
 
@@ -13,6 +13,7 @@ import './index.scss?name=keyword-stats';
 export class KeywordStats extends PolymerElement {
   @property({type: Object, observer: 'keywordDataChanged_'})
   keywordData?: CardElement;
+  @property() colorType = ColorType.IDENTITY;
   @property() protected numW_ = 0;
   @property() protected numU_ = 0;
   @property() protected numB_ = 0;
@@ -40,10 +41,12 @@ export class KeywordStats extends PolymerElement {
         this.cardListShowing_ = !this.cardListShowing_);
   }
 
+  protected isIdentity_() {
+    return this.colorType === ColorType.IDENTITY;
+  }
+
   protected keywordDataChanged_(keywordData: CardElement) {
     /*
-    name: string;
-  scryfallUri: string;
   colors: ManaColor[];
   colorIdentity: ManaColor[];
   legalities: {

@@ -14,7 +14,7 @@
   <h3>Filters</h3>
   <div class="filterBlock">
     <div class="inline"><strong>Use:</strong></div>
-    <paper-radio-group class="row inline" selected="identity">
+    <paper-radio-group class="row inline" selected="{{colorType_}}">
       <paper-radio-button name="color">Card color</paper-radio-button>
       <paper-radio-button name="identity">Card color identity</paper-radio-button>
     </paper-radio-group>
@@ -55,6 +55,6 @@
       is="dom-repeat"
       items="[[keywordData_]]"
       sort="sortKeywords_">
-    <keyword-stats keyword-data="[[item]]"></keyword-stats>
+    <keyword-stats keyword-data="[[item]]" color-type="[[colorType_]]"></keyword-stats>
   </template>
 </div>
