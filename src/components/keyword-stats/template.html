@@ -1,6 +1,6 @@
 <style include="keyword-stats"></style>
 
-[[firstUpper_(keywordData.keyword)]]
+<span class="label"><a href="https://scryfall.com/search?q=o:/\b[[keywordData.keyword]]\b/">[[firstUpper_(keywordData.keyword)]]</a></span>
 <pie-mana-display
     num-w="[[numW_]]"
     num-u="[[numU_]]"
@@ -9,10 +9,38 @@
     num-g="[[numG_]]"
     num-c="[[numC_]]"
     total="[[keywordData.length]]"></pie-mana-display>
-W: [[pct_(numW_)]]
-U: [[pct_(numU_)]]
-B: [[pct_(numB_)]]
-R: [[pct_(numR_)]]
-G: [[pct_(numG_)]]
-C: [[pct_(numC_)]]
-M: [[pct_(numM_)]]
+<div class="white badge">
+  <paper-tooltip>[[numW_]] white cards out of [[keywordData.length]] total</paper-tooltip>
+  <img src="/images/w.svg"> [[pct_(numW_)]]
+</div>
+<div class="blue badge">
+  <paper-tooltip>[[numU_]] blue cards out of [[keywordData.length]] total</paper-tooltip>
+  <img src="/images/u.svg"> [[pct_(numU_)]]
+</div>
+<div class="black badge">
+  <paper-tooltip>[[numB_]] black cards our of [[keywordData.length]] total</paper-tooltip>
+  <img src="/images/b.svg"> [[pct_(numB_)]]
+</div>
+<div class="red badge">
+  <paper-tooltip>[[numR_]] red cards our of [[keywordData.length]] total</paper-tooltip>
+  <img src="/images/r.svg"> [[pct_(numR_)]]
+</div>
+<div class="green badge">
+  <paper-tooltip>[[numG_]] green cards our of [[keywordData.length]] total</paper-tooltip>
+  <img src="/images/g.svg"> [[pct_(numG_)]]
+</div>
+<div class="colorless badge">
+  <paper-tooltip>[[numC_]] colorless cards our of [[keywordData.length]] total</paper-tooltip>
+  <img src="/images/c.svg"> [[pct_(numC_)]]
+</div>
+<div class="multicolor badge">
+  <paper-tooltip>[[numM_]] multicolor cards our of [[keywordData.length]] total</paper-tooltip>
+  <img src="/images/m.svg"> [[pct_(numM_)]]
+</div>
+<template is="dom-if" if="[[cardListShowing_]]">
+  <div class="cardList">
+    <template is="dom-repeat" items="[[keywordData]]">
+      <span><a href="[[item.scryfallUri]]">[[item.name]]</a></span>
+    </template>
+  </div>
+</template>

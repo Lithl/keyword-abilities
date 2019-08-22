@@ -1,5 +1,6 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element';
 import { customElement, property } from '@polymer/decorators';
+import '@polymer/paper-tooltip/paper-tooltip';
 
 import '../pie-mana-display';
 
@@ -26,10 +27,17 @@ export class KeywordStats extends PolymerElement {
   @property() protected numIdG_ = 0;
   @property() protected numIdC_ = 0;
   @property() protected numIdM_ = 0;
+  @property() private cardListShowing_ = false;
 
   static get template() {
     // @ts-ignore
     return html([template]);
+  }
+
+  ready() {
+    super.ready();
+    this.addEventListener('tap', () =>
+        this.cardListShowing_ = !this.cardListShowing_);
   }
 
   protected keywordDataChanged_(keywordData: CardElement) {
