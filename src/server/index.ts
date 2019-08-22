@@ -8,6 +8,8 @@ export function apply(root: string) {
   const whitelist: {[uri: string]: string} = {
     'mtgKeywords.js': 'dist/mtgKeywords.js',
     'mtgKeywords.lib.js': 'dist/vendors~mtgKeywords.js',
+    'web-animations.js':
+        'node_modules/web-animations-js/web-animations-next-lite.min.js',
     'root.css': '',
     '': 'index.html',
     'favicon.ico': '',
