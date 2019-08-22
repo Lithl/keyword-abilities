@@ -133,27 +133,14 @@ export class KeywordStats extends PolymerElement {
       this.isLegal_);
   }
 
-  protected filteredLength_(keywordData: CardElement, _extra: number) {
+  protected filteredLength_(filtered: CardData[], extra: number) {
+    // if (this.filtered_ && (this.filtered_.length === 0)) console.log(keywordData);
     // return keywordData.filter((el) => this.filterFn_(el)).length + (extra || 0);
-    return keywordData.length;
+    // return (this.filtered_ || []).length;
+    return (filtered ? filtered.length : 0) + (extra || 0);
   }
 
   private keywordDataChanged_(keywordData: CardElement) {
-    /*
-  legalities: {
-    standard: Legality,
-    future: Legality,
-    modern: Legality,
-    legacy: Legality,
-    pauper: Legality,
-    vintage: Legality,
-    penny: Legality,
-    commander: Legality,
-    brawl: Legality,
-    duel: Legality,
-    oldschool: Legality,
-  };
-  */
     this.numW_ = 0;
     this.numU_ = 0;
     this.numB_ = 0;
