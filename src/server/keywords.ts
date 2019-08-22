@@ -42,13 +42,36 @@ function getCardData(keyword: string, uri?: string) {
         const json = JSON.parse(text);
         const data: CardData[] = [];
         json.data.forEach((orig: any) => {
-          data.push({
-            name: orig.name,
-            scryfallUri: orig.scryfall_uri,
-            colors: orig.colors,
-            colorIdentity: orig.color_identity,
-            legalities: orig.legalities,
-          });
+          if (orig.card_faces) {
+            const frontText = orig.card_faces[0].oracle_text;
+            const backText = orig.card_faces[1].oracle_text;
+            if (frontText.toLowerCase().indexOf(kwdLower) >= 0) {
+              data.push({
+                name: orig.card_faces[0].name,
+                scryfallUri: orig.scryfall_uri,
+                colors: orig.card_faces[0].colors || orig.colors,
+                colorIdentity: orig.color_identity,
+                legalities: orig.legalities,
+              });
+            }
+            if (backText.toLowerCase().indexOf(kwdLower) >= 0) {
+              data.push({
+                name: orig.card_faces[1].name,
+                scryfallUri: orig.scryfall_uri,
+                colors: orig.card_faces[1].colors || orig.colors,
+                colorIdentity: orig.color_identity,
+                legalities: orig.legalities,
+              });
+            }
+          } else {
+            data.push({
+              name: orig.name,
+              scryfallUri: orig.scryfall_uri,
+              colors: orig.colors,
+              colorIdentity: orig.color_identity,
+              legalities: orig.legalities,
+            });
+          }
         });
 
         if (!keywords[kwdLower]) {
