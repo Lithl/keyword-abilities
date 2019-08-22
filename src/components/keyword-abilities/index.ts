@@ -1,6 +1,12 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element';
 import { customElement, property } from '@polymer/decorators';
 import '@polymer/iron-ajax/iron-ajax';
+import '@polymer/paper-radio-group/paper-radio-group';
+import '@polymer/paper-radio-button/paper-radio-button';
+import '@polymer/paper-checkbox/paper-checkbox';
+import '@polymer/paper-dropdown-menu/paper-dropdown-menu';
+import '@polymer/paper-listbox/paper-listbox';
+import '@polymer/paper-item/paper-item';
 
 import { default as template } from './template.html';
 import { CardData } from '../../server/keywords';
