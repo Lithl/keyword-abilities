@@ -41,4 +41,9 @@ module.exports = {
   },
   optimization: {splitChunks: {chunks: 'all'}},
   performance: {hints: false},
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+  },
 };
