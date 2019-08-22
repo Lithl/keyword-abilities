@@ -44,28 +44,9 @@
     </paper-dropdown-menu>
   </div>
 </div>
-<!--
-  name: string;
-  scryfallUri: string;
-  colors: ManaColor[];
-  colorIdentity: ManaColor[];
-  legalities: {
-    standard: Legality,
-    future: Legality,
-    modern: Legality,
-    legacy: Legality,
-    pauper: Legality,
-    vintage: Legality,
-    penny: Legality,
-    commander: Legality,
-    brawl: Legality,
-    duel: Legality,
-    oldschool: Legality,
-  };
--->
 <template
     is="dom-repeat"
     items="[[keywordData_]]"
     sort="sortKeywords_">
-  <p>[[index]]. [[firstUpper_(item.keyword)]]</p>
+  <keyword-stats keyword-data="[[item]]"></keyword-stats>
 </template>
