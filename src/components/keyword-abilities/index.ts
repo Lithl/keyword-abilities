@@ -1,5 +1,5 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element';
-import { customElement, property } from '@polymer/decorators';
+import { customElement, property, query } from '@polymer/decorators';
 import '@polymer/iron-ajax/iron-ajax';
 import '@polymer/paper-radio-group/paper-radio-group';
 import '@polymer/paper-radio-button/paper-radio-button';
@@ -20,10 +20,17 @@ export type CardElement = CardData[] & { keyword: string };
 @customElement('keyword-abilities')
 export class KeywordAbilities extends PolymerElement {
   @property() protected keywordData_: CardElement[] = [];
+  @query('#header') protected headerDiv_!: HTMLDivElement;
+  @query('#content') protected contentDiv_!: HTMLDivElement;
 
   static get template() {
     // @ts-ignore
     return html([template]);
+  }
+
+  ready() {
+    super.ready();
+    this.contentDiv_.style.height = `${window.innerHeight - this.headerDiv_.clientHeight - 40}px`;
   }
 
   protected getKeywords_(e: CustomEvent) {

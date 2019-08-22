@@ -53,5 +53,31 @@ paper-dropdown-menu {
 }
 
 keyword-stats {
-  margin-top: 8px;
+  padding: 8px 0;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .2);
+  }
+}
+
+p {
+  margin: 8px;
+}
+
+#header {
+  width: 100%;
+  padding: 16px 0 4px 16px;
+  top: -8px;
+  left: -8px;
+  position: relative;
+  background: white;
+  box-shadow: 0 1px 8px black;
+  z-index: 2;
+}
+
+#content {
+  overflow: scroll;
+  top: -8px;
+  position: relative;padding-top: 8px;
+  // z-index: 1;
 }
