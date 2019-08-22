@@ -1,6 +1,6 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-// import * as options from './options';
+import * as keywords from './keywords';
 
 export function apply(root: string) {
   const app = express();
@@ -21,7 +21,7 @@ export function apply(root: string) {
   }
 
   app.use(bodyParser.json());
-  // options.apply(app, pool);
+  keywords.apply(app);
 
 
   app.listen(3003, () => console.log('Server running on port 3003'));
