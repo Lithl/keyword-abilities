@@ -2,7 +2,11 @@ import express from 'express';
 import request from 'request-promise-native';
 
 type ManaColor = 'W' | 'U' | 'B' | 'R' | 'G';
-type Legality = 'not_legal' | 'legal' | 'restricted';
+export enum Legality {
+  NOT_LEGAL = 'not_legal',
+  LEGAL = 'legal',
+  RESTRICTED = 'restricted'
+}
 
 export interface CardData {
   name: string;
