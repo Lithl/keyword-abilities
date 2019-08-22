@@ -1,2 +1,14 @@
 <style include="keyword-abilities"></style>
+<iron-ajax
+    auto
+    url="/keywords"
+    handle-as="json"
+    on-response="getKeywords_"></iron-ajax>
 
+<h2>Keyword frequency among Magic: the Gathering cards</h2>
+<template
+    is="dom-repeat"
+    items="[[keywordData_]]"
+    sort="sortKeywords_">
+  <p>[[index]]. [[firstUpper_(item.keyword)]]</p>
+</template>
