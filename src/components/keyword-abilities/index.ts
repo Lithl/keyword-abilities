@@ -22,10 +22,48 @@ export enum ColorType {
   IDENTITY = 'identity'
 }
 
+export enum LegalCategory {
+  LEGAL_ANY = 'legal-any',
+  LEGAL_ALL = 'legal-all',
+  ILLEGAL_ANY = 'illegal-any',
+  ILLEGAL_ALL = 'illegal-all',
+  RESTRICTED_ANY = 'restricted-any',
+  RESTRICTED_ALL = 'restricted-all',
+  ALL = 'all'
+}
+
+export interface FormatCheckboxGroup {
+  standard: true,
+  future: boolean;
+  modern: boolean;
+  legacy: boolean;
+  pauper: boolean;
+  vintage: boolean;
+  penny: boolean;
+  commander: boolean;
+  brawl: boolean;
+  duel: boolean;
+  oldschool: boolean;
+}
+
 @customElement('keyword-abilities')
 export class KeywordAbilities extends PolymerElement {
   @property() protected keywordData_: CardElement[] = [];
   @property() protected colorType_ = ColorType.IDENTITY;
+  @property() protected legalCategory_ = LegalCategory.LEGAL_ANY;
+  @property() protected formatCheckboxes_: FormatCheckboxGroup = {
+    standard: true,
+    future: true,
+    modern: true,
+    legacy: true,
+    pauper: true,
+    vintage: true,
+    penny: true,
+    commander: true,
+    brawl: true,
+    duel: true,
+    oldschool: true,
+  };
   @query('#header') protected headerDiv_!: HTMLDivElement;
   @query('#content') protected contentDiv_!: HTMLDivElement;
 
@@ -36,7 +74,7 @@ export class KeywordAbilities extends PolymerElement {
 
   ready() {
     super.ready();
-    this.contentDiv_.style.height = `${window.innerHeight - this.headerDiv_.clientHeight - 40}px`;
+    this.contentDiv_.style.height = `${window.innerHeight - this.headerDiv_.clientHeight - 32}px`;
   }
 
   protected getKeywords_(e: CustomEvent) {
